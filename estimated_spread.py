@@ -14,4 +14,28 @@ Return the estimated spread. If the audiences_followers list is empty, return 0.
 """
 
 def get_estimated_spread(audiences_followers):
-    pass
+    
+    if len(audiences_followers) == 0:
+        return 0
+    
+    # calc num of followers ([2, 3, 2, 19] = 4)
+    
+    num_followers = len(audiences_followers)
+    
+    # calc average followers for followers ([2, 3, 2, 19] = 6.5)
+    
+    temp = 0
+    for i in audiences_followers:
+        temp += i
+    
+    average_audience_followers = temp / num_followers
+    
+    # return estemated spread
+    estimated_spread = average_audience_followers * ( num_followers ** 1.2 )
+    
+    return estimated_spread
+
+if __name__ == '__main__':
+    test = [2,3,2,19]
+    
+    print(get_estimated_spread(test))
